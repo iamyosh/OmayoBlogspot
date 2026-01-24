@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -11,7 +12,7 @@ public class TopbarPage {
     private WebDriver driver;
     private WebDriverWait wait;
     private By search = By.name("q");
-//    private By allPostsLink = By.xpath("//a[@href='/https://omayo.blogspot.com/']");
+    private By selectMore = By.className("select.L3Qlm");
 
     public TopbarPage(WebDriver driver){
         this.driver = driver;
@@ -25,5 +26,11 @@ public class TopbarPage {
     public void backToHome(){
         WebElement showAllPostsLink = driver.findElement(By.linkText("Show all posts"));
         showAllPostsLink.click();
+    }
+
+    public void moreOption(){
+       WebElement moreDropdown = driver.findElement(selectMore);
+       moreDropdown.click();
+
     }
 }

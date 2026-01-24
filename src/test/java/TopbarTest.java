@@ -9,5 +9,6 @@ public class TopbarTest extends BaseTest{
         //no need to reassign homepage.topbarpage bcz its there in basetest
         topbarPage.searchBar();
         topbarPage.backToHome();
+        topbarPage.moreOption();
     }
 }
