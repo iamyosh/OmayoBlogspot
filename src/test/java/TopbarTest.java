@@ -2,18 +2,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TopbarTest extends BaseTest{
-    private TopbarPage topbarPage;
-    private HomePage homePage;
-
-    @BeforeMethod
-    public void initPage() {
-        homePage = new HomePage(driver);
-    }
 
     @Test
     public void testTopBar(){
         //Homepage -> TopbarPage
-        topbarPage = homePage.topbarPage();
+        //no need to reassign homepage.topbarpage bcz its there in basetest
         topbarPage.searchBar();
+        topbarPage.backToHome();
     }
 }

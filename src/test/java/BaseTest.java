@@ -8,11 +8,11 @@ public class BaseTest {
     protected HomePage homePage;
     protected TopbarPage topbarPage;
 
-    @BeforeMethod
+    @BeforeClass
     public void setDriver() {
         driver = new ChromeDriver();
         driver.get("https://omayo.blogspot.com/");
-        homePage = new HomePage(driver);
+        homePage = new HomePage(driver);        //initialize homepage
 
         topbarPage = homePage.topbarPage();
     }
