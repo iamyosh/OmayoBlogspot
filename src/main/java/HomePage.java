@@ -7,16 +7,15 @@ import java.time.Duration;
 
 public class HomePage {
     private WebDriver driver;
-    private WebDriverWait wait;
-    private By search = By.className("ENqPLc");
+    protected WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    public void searchBar(){
-        driver.findElement(search).sendKeys("selenium tests" + Keys.ENTER);
-
+    public TopbarPage topbarPage(){
+        return new TopbarPage(driver);
     }
+
 }
