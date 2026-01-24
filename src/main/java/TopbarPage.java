@@ -1,7 +1,5 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +10,7 @@ public class TopbarPage {
     private WebDriver driver;
     private WebDriverWait wait;
     private By search = By.name("q");
-    private By selectMore = By.className("select.L3Qlm");
+    private By blogsOption1 = By.linkText("SeleniumByArun");
 
     public TopbarPage(WebDriver driver){
         this.driver = driver;
@@ -26,11 +24,13 @@ public class TopbarPage {
     public void backToHome(){
         WebElement showAllPostsLink = driver.findElement(By.linkText("Show all posts"));
         showAllPostsLink.click();
+
+        Actions actions = new Actions(driver);              //action class to hover over element
+        WebElement blogsSelection = driver.findElement(By.id("blogsmenu"));
+        actions.moveToElement(blogsSelection).perform();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(blogsOption1)).click();
     }
 
-    public void moreOption(){
-       WebElement moreDropdown = driver.findElement(selectMore);
-       moreDropdown.click();
 
-    }
 }
