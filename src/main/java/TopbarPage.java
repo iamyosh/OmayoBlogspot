@@ -29,7 +29,11 @@ public class TopbarPage {
         WebElement blogsSelection = driver.findElement(By.id("blogsmenu"));
         actions.moveToElement(blogsSelection).perform();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(blogsOption1)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(blogsOption1));
+    }
+
+    public BodyPage goToBodyPage(){
+        return new BodyPage(driver);
     }
 
 
