@@ -18,6 +18,8 @@ public class BodyPage {
     private By uploadFile = By.id("uploadfile");
     private By timerEnaleButton = By.id("timerButton");
     private By doubleClickButton = By.linkText("Double click Here");
+    private By checkThisButton = By.linkText("Check this");
+    private By checkBox = By.id("dte");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -85,6 +87,10 @@ public class BodyPage {
         Actions actions = new Actions(driver);
         WebElement element1 = driver.findElement(doubleClickButton);
         actions.doubleClick(element1).perform();
+
+
+        //checking button
+
     }
 
 }
