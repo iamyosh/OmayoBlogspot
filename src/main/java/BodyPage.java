@@ -40,12 +40,12 @@ public class BodyPage {
     }
 
     public void clickLink() throws InterruptedException {
-        wait.until(ExpectedConditions.elementToBeClickable(link1)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(link1)).click();     //opening in new window
         wait.withTimeout(Duration.ofSeconds(5));
 
         driver.navigate().back();       //back to previous
 
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textLink));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textLink));     //DisplayForTimeAndDissapear text link
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
