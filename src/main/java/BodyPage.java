@@ -17,7 +17,7 @@ public class BodyPage {
     private By popWindow = By.linkText("Open a popup window");
     private By uploadFile = By.id("uploadfile");
     private By timerEnaleButton = By.id("timerButton");
-    private By doubleClickButton = By.linkText("Double click Here");
+    private By doubleClickButton = By.xpath("//button[normalize-space()='Double click Here']");
     private By checkThisButton = By.linkText("Check this");
     private By checkBox = By.id("dte");
 
@@ -90,7 +90,9 @@ public class BodyPage {
 
 
         //checking button
-
+//        wait.until(ExpectedConditions.elementToBeClickable(checkThisButton)).click();
+//        wait.withTimeout(Duration.ofSeconds(13));
+//        driver.findElement(checkBox).click();
     }
 
 }
