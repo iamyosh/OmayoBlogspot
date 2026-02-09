@@ -16,6 +16,7 @@ public class BodyPage {
     private By textLink = By.id("alert2");
     private By popWindow = By.linkText("Open a popup window");
     private By uploadFile = By.id("uploadfile");
+    private By timerEnaleButton = By.id("timerButton");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -74,6 +75,9 @@ public class BodyPage {
         WebElement uploadElement = wait.until(ExpectedConditions.elementToBeClickable(uploadFile));
         uploadElement.sendKeys("C:\\Users\\MY FILE\\Downloads\\relational-database.png");  //send file path directly
 
+        //timer enable button + alert
+        wait.until(ExpectedConditions.elementToBeClickable(timerEnaleButton)).click();
+        driver.switchTo().alert().accept();
     }
 
 }
