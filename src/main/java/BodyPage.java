@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class BodyPage {
     private WebDriver driver;
@@ -13,6 +14,7 @@ public class BodyPage {
     private By dropDownList = By.className("combobox");
     private By link1 = By.linkText("Selenium143");
     private By textLink = By.id("alert2");
+    private By popWindow = By.linkText("Open a popup window");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -51,6 +53,22 @@ public class BodyPage {
         element.click();
 
         driver.switchTo().alert().accept();     //accept alert window
+
+
+        //opening popup window and closing
+        wait.until(ExpectedConditions.elementToBeClickable(popWindow)).click();
+
+        String mainWindow = driver.getWindowHandle();       //store main window handle
+        Set<String> allWindows = driver.getWindowHandles(); //get all window handles
+
+        for (String handle : allWindows){                   //loop through handles (current handle is stored in 'handle')
+            if (!handle.equals(mainWindow)){
+                driver.switchTo().window(handle);           //switch to popup
+                driver.close();                             //close popup
+                driver.switchTo().window(mainWindow);       //back to main window
+            }
+        }
+
     }
 
 }
