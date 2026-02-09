@@ -91,9 +91,9 @@ public class BodyPage {
 
 
         //checking button
-//        wait.until(ExpectedConditions.elementToBeClickable(checkThisButton)).click();
-//        wait.withTimeout(Duration.ofSeconds(13));
-//        driver.findElement(checkBox).click();
+        wait.until(ExpectedConditions.elementToBeClickable(checkThisButton)).click();
+        wait.withTimeout(Duration.ofSeconds(13));
+        driver.findElement(checkBox).click();
     }
 
 }
