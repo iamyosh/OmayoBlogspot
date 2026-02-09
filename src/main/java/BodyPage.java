@@ -15,6 +15,7 @@ public class BodyPage {
     private By link1 = By.linkText("Selenium143");
     private By textLink = By.id("alert2");
     private By popWindow = By.linkText("Open a popup window");
+    private By uploadFile = By.id("uploadfile");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -68,6 +69,10 @@ public class BodyPage {
                 driver.switchTo().window(mainWindow);       //back to main window
             }
         }
+
+        //upload file
+        WebElement uploadElement = wait.until(ExpectedConditions.elementToBeClickable(uploadFile));
+        uploadElement.sendKeys("C:\\Users\\MY FILE\\Downloads\\relational-database.png");  //send file path directly
 
     }
 
