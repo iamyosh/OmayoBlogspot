@@ -87,6 +87,7 @@ public class BodyPage {
         Actions actions = new Actions(driver);
         WebElement element1 = driver.findElement(doubleClickButton);
         actions.doubleClick(element1).perform();
+        driver.switchTo().alert().accept();
 
 
         //checking button
