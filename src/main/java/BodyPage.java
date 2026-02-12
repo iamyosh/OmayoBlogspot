@@ -112,7 +112,10 @@ public class BodyPage {
 
         //textarea fields
         wait.until(ExpectedConditions.presenceOfElementLocated(textareaField)).sendKeys("This is a text field");
-        wait.until(ExpectedConditions.presenceOfElementLocated(textareaField2)).sendKeys("This is also a text field");
+
+        WebElement textareaElement = wait.until(ExpectedConditions.presenceOfElementLocated(textareaField2));
+        textareaElement.clear();        //remove the text already there
+        textareaElement.sendKeys("This is also a text field");
     }
 
 }
