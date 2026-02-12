@@ -18,8 +18,15 @@ public class BodyPage {
     private By uploadFile = By.id("uploadfile");
     private By timerEnaleButton = By.id("timerButton");
     private By doubleClickButton = By.xpath("//button[normalize-space()='Double click Here']");
-    private By checkThisButton = By.linkText("Check this");
+    private By checkThisButton = By.xpath("//button[text()='Check this']");
     private By checkBox = By.id("dte");
+
+    private By password = By.xpath("//input[@name='pswrd']");
+    private By username = By.xpath("//input[@name='userid']");
+    private By loginButton = By.xpath("//input[@type='button' and @value='Login']");
+
+    private By textareaField = By.xpath("//textarea[@id='ta1' and @rows='10' and @cols='80']");
+    private By textareaField2 = By.xpath("//textarea[@rows='10' and @cols='30']");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -48,7 +55,7 @@ public class BodyPage {
 
     public void clickLink() throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(link1)).click();     //opening in new window
-        wait.withTimeout(Duration.ofSeconds(5));
+        wait.withTimeout(Duration.ofSeconds(10));
 
         driver.navigate().back();       //back to previous
 
@@ -92,8 +99,20 @@ public class BodyPage {
 
         //checking button
         wait.until(ExpectedConditions.elementToBeClickable(checkThisButton)).click();
-        wait.withTimeout(Duration.ofSeconds(13));
+        wait.withTimeout(Duration.ofSeconds(15));
         driver.findElement(checkBox).click();
+
+
+        //login section
+        driver.findElement(username).sendKeys("Yosh");
+        driver.findElement(password).sendKeys("123456");
+        driver.findElement(loginButton).click();
+        driver.switchTo().alert().accept();
+
+
+        //textarea fields
+        wait.until(ExpectedConditions.presenceOfElementLocated(textareaField)).sendKeys("This is a text field");
+        wait.until(ExpectedConditions.presenceOfElementLocated(textareaField2)).sendKeys("This is also a text field");
     }
 
 }
