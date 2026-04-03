@@ -83,7 +83,7 @@ public class BodyPage {
 
         //upload file
         WebElement uploadElement = wait.until(ExpectedConditions.elementToBeClickable(uploadFile));
-        uploadElement.sendKeys("C:\\Users\\MY FILE\\Downloads\\relational-database.png");  //send file path directly
+        uploadElement.sendKeys("C:\\Users\\MY FILE\\Downloads\\WhatsApp Image 2026-04-01 at 11.15.19 PM.jpeg");  //send file path directly
 
         //Timer enable button + alert
         wait.until(ExpectedConditions.elementToBeClickable(timerEnaleButton)).click();
@@ -116,6 +116,10 @@ public class BodyPage {
         WebElement textareaElement = wait.until(ExpectedConditions.presenceOfElementLocated(textareaField2));
         textareaElement.clear();        //remove the text already there
         textareaElement.sendKeys("This is also a text field");
+
+
+        //radio button
+
     }
 
 }
