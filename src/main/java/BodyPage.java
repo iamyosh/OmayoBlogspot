@@ -38,6 +38,7 @@ public class BodyPage {
     private By confirmationBtn = By.id("confirm");
 
     private By frame01 = By.id("iframe1");
+    private By frame02 = By.id("iframe2");
 
     public BodyPage(WebDriver driver){
         this.driver = driver;
@@ -158,14 +159,22 @@ public class BodyPage {
     }
 
     public void iframeSelection() throws InterruptedException{
-        //iframes
+        //iframe 1
         WebElement frame1 = wait.until(ExpectedConditions.visibilityOfElementLocated(frame01));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", frame1);
 
         driver.switchTo().frame(frame1);  //go to frame 1
         jse.executeScript("window.scroll(0,8000)");
+        driver.switchTo().defaultContent();     //back to main web page body
 
+
+        //iframe 2
+        WebElement frame2 = wait.until(ExpectedConditions.presenceOfElementLocated(frame02));
+        jse.executeScript("arguments[0].scrollIntoView(true);", frame2);
+
+        driver.switchTo().frame(frame2);
+        jse.executeScript("window.scroll(0,8000)");
         driver.switchTo().defaultContent();
     }
 
