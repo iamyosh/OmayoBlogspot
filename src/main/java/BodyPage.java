@@ -174,8 +174,11 @@ public class BodyPage {
         jse.executeScript("arguments[0].scrollIntoView(true);", frame2);
 
         driver.switchTo().frame(frame2);
-        jse.executeScript("window.scroll(0,8000)");
+        jse.executeScript("window.scroll(0,9000)");
         driver.switchTo().defaultContent();
+
+        jse.executeScript("window.scrollTo(0,0)");  //scroll to top of the pg
+        driver.close();     //close window (after everything)
     }
 
 
