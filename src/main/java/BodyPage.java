@@ -42,6 +42,8 @@ public class BodyPage {
     public BodyPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        driver.manage().window().maximize();
     }
 
     //multiselect in list
@@ -156,13 +158,12 @@ public class BodyPage {
 
 
         //iframes
-      WebElement frame1 = driver.findElement(frame01);
-      driver.switchTo().frame(frame1);  //go to frame 1
-        Thread.sleep(3000);
-
+        WebElement frame1 = driver.findElement(frame01);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", frame1);
-        jse.executeScript("window.scroll(0,1500)");
+
+        driver.switchTo().frame(frame1);  //go to frame 1
+        jse.executeScript("window.scroll(0,5000)");
 
         driver.switchTo().defaultContent();
 
