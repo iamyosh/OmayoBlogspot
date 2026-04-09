@@ -164,7 +164,7 @@ public class BodyPage {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", frame1);
 
-        driver.switchTo().frame(frame1);  //go to frame 1
+        driver.switchTo().frame(frame1);
         jse.executeScript("window.scroll(0,8000)");
         driver.switchTo().defaultContent();     //back to main web page body
 
