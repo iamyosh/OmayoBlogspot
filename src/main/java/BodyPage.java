@@ -37,6 +37,8 @@ public class BodyPage {
     private By promtBtn = By.id("prompt");
     private By confirmationBtn = By.id("confirm");
 
+    private By frame01 = By.id("iframe1");
+
     public BodyPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -154,11 +156,13 @@ public class BodyPage {
 
 
         //iframes
-        WebElement frame1 = driver.findElement(By.id("iframe1"));
-        driver.switchTo().frame(frame1);    //going to frame 1
+      WebElement frame1 = driver.findElement(frame01);
+      driver.switchTo().frame(frame1);  //go to frame 1
         Thread.sleep(3000);
+
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scroll(0,800)");
+        jse.executeScript("arguments[0].scrollIntoView(true);", frame1);
+        jse.executeScript("window.scroll(0,1500)");
 
         driver.switchTo().defaultContent();
 
