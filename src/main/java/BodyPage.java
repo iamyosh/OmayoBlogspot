@@ -72,7 +72,7 @@ public class BodyPage {
         driver.navigate().back();       //back to previous
 
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textLink));     //DisplayForTimeAndDissapear text link
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
 
@@ -85,8 +85,8 @@ public class BodyPage {
         String mainWindow = driver.getWindowHandle();       //store main window handle
         Set<String> allWindows = driver.getWindowHandles(); //get all window handles
 
-        for (String handle : allWindows){                   //loop through handles (current handle is stored in 'handle')
-            if (!handle.equals(mainWindow)){
+        for (String handle : allWindows) {                   //loop through handles (current handle is stored in 'handle')
+            if (!handle.equals(mainWindow)) {
                 driver.switchTo().window(handle);           //switch to popup
                 driver.close();                             //close popup
                 driver.switchTo().window(mainWindow);       //back to main window
@@ -155,18 +155,22 @@ public class BodyPage {
 
         wait.withTimeout(Duration.ofSeconds(10));
 
+    }
 
+    public void iframeSelection() throws InterruptedException{
         //iframes
-        WebElement frame1 = driver.findElement(frame01);
+        WebElement frame1 = wait.until(ExpectedConditions.visibilityOfElementLocated(frame01));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", frame1);
 
         driver.switchTo().frame(frame1);  //go to frame 1
-        jse.executeScript("window.scroll(0,5000)");
+        jse.executeScript("window.scroll(0,8000)");
 
         driver.switchTo().defaultContent();
-
-
     }
+
+
+
+
 
 }

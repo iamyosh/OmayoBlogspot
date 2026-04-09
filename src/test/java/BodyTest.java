@@ -17,5 +17,6 @@ public class BodyTest extends BaseTest{
         bodyPage.multiList();
         bodyPage.selectFromDropdown();
         bodyPage.clickLink();
+        bodyPage.iframeSelection();
     }
 }
