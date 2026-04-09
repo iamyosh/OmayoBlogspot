@@ -28,6 +28,15 @@ public class BodyPage {
     private By textareaField = By.xpath("//textarea[@id='ta1' and @rows='10' and @cols='80']");
     private By textareaField2 = By.xpath("//textarea[@rows='10' and @cols='30']");
 
+    private By htmlUsername = By.xpath("//input[@type='text']");
+    private By htmlPassword = By.xpath("//input[@type='password']");
+    private By htmlLoginButton = By.xpath("//button[@type='button' and @value='LogIn']");
+
+    private By radioBtn2 = By.id("radio2");
+    private By alertDemoBtn = By.id("alert1");
+    private By promtBtn = By.id("prompt");
+    private By confirmationBtn = By.id("confirm");
+
     public BodyPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -118,7 +127,41 @@ public class BodyPage {
         textareaElement.sendKeys("This is also a text field");
 
 
-        //radio button
+        //html form
+        wait.until(ExpectedConditions.presenceOfElementLocated(htmlUsername)).sendKeys("Yosh");
+        wait.until(ExpectedConditions.presenceOfElementLocated(htmlPassword)).sendKeys("123");
+        driver.findElement(htmlLoginButton).click();
+
+
+        //radio options
+        wait.until(ExpectedConditions.elementToBeClickable(radioBtn2)).click();
+
+        //alert demo - 'Click to get alert'
+        wait.until(ExpectedConditions.elementToBeClickable(alertDemoBtn)).click();
+        driver.switchTo().alert().accept();
+
+        //get prompt
+        wait.until(ExpectedConditions.elementToBeClickable(promtBtn)).click();
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys("yosh ro");
+        alert.accept();
+
+        //confirmation alert window
+        wait.until(ExpectedConditions.elementToBeClickable(confirmationBtn)).click();
+        driver.switchTo().alert().accept();
+
+        wait.withTimeout(Duration.ofSeconds(10));
+
+
+        //iframes
+        WebElement frame1 = driver.findElement(By.id("iframe1"));
+        driver.switchTo().frame(frame1);    //going to frame 1
+        Thread.sleep(3000);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scroll(0,800)");
+
+        driver.switchTo().defaultContent();
+
 
     }
 
