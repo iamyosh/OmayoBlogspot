@@ -43,7 +43,6 @@ public class BodyPage {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        driver.manage().window().maximize();
     }
 
     //multiselect in list

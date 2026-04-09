@@ -12,6 +12,8 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        driver.manage().window().maximize();
     }
 
     public TopbarPage topbarPage(){
