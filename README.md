@@ -123,6 +123,3 @@ mvn test
 
 ---
 
-## Author
-
-YC Edirisinghe
